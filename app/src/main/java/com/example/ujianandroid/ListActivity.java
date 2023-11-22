@@ -17,17 +17,26 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ListView lvNama = (ListView) findViewById(R.id.lvNama);
+        ListView lvNama = findViewById(R.id.lvNama);
 
         ArrayList<String> daftar_nama = getIntent().getExtras().getStringArrayList("daftar_nama");
 
-        if(daftar_nama.isEmpty()){
+        if (daftar_nama.isEmpty()) {
             daftar_nama.add("data masih kosong");
         }
 
-        ArrayAdapter<String> ad_nama = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, daftar_nama);
+
+        ArrayList<String> repeatedNames = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            if ((i + 1) % 2 == 0) {
+                for (String name : daftar_nama) {
+                    repeatedNames.add((i + 1) + ". " + name);
+                }
+            }
+        }
+
+        ArrayAdapter<String> ad_nama = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, repeatedNames);
 
         lvNama.setAdapter(ad_nama);
-
     }
-}
+    }
