@@ -26,15 +26,6 @@ public class ListActivity extends AppCompatActivity {
         }
 
 
-        ArrayList<String> repeatedNames = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            if ((i + 1) % 2 == 0) {
-                for (String name : daftar_nama) {
-                    repeatedNames.add((i + 1) + ". " + name);
-                }
-            }
-        }
-
         ArrayAdapter<String> ad_nama = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, repeatedNames);
 
         lvNama.setAdapter(ad_nama);
